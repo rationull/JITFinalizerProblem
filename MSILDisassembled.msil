@@ -1,0 +1,68 @@
+.method public hidebysig instance void  ProblemFunction(class Assembly2.UI.Reports.objParameter params,
+                                                         bool  marshal( unsigned int8) boolParameter,
+                                                         native int parentHWND,
+                                                         valuetype [PresentationFramework]System.Windows.WindowStartupLocation startLoc) cil managed
+{
+  // Code size       109 (0x6d)
+  .maxstack  4
+  .locals init ([0] class [Assembly1]Assembly1.Reports.ViewerWindow V_0,
+           [1] class [mscorlib]System.Collections.Generic.List`1<class [Assembly1]Assembly1.Reports.Controls.Page> V_1,
+           [2] class [Assembly1]Assembly1.Reports.Utils.ReportLayoutException V_2,
+           [3] valuetype [mscorlib]System.Nullable`1<bool> V_3,
+           [4] class [Assembly1]Assembly1.Reports.ModelInterfaces.ContentModelInterface V_4,
+           [5] class [PresentationFramework]System.Windows.Interop.WindowInteropHelper V_5)
+  .try
+  {
+    IL_0000:  newobj     instance void class [mscorlib]System.Collections.Generic.List`1<class [Assembly1]Assembly1.Reports.Controls.Page>::.ctor()
+    IL_0005:  stloc.1
+    IL_0006:  ldarg.0
+    IL_0007:  ldloc.1
+    IL_0008:  ldarg.1
+    IL_0009:  call       instance class [Assembly1]Assembly1.Reports.ModelInterfaces.ContentModelInterface Assembly2.UI.Reports.ProblemClass::BuildContent(class [mscorlib]System.Collections.Generic.ICollection`1<class [Assembly1]Assembly1.Reports.Controls.Page>,
+                                                                                                                                                                              class Assembly2.UI.Reports.objParameter)
+    IL_000e:  ldarg.2
+    IL_000f:  newobj     instance void [Assembly1]Assembly1.Reports.ViewerWindow::.ctor(class [Assembly1]Assembly1.Reports.ModelInterfaces.ViewerWindowModelInterface,
+                                                                                                bool)
+    IL_0014:  stloc.0
+    IL_0015:  ldloc.0
+    IL_0016:  call       instance class [mscorlib]System.Collections.Generic.List`1<class [Assembly1]Assembly1.Reports.Controls.Page> [Assembly1]Assembly1.Reports.ViewerWindow::get_Pages()
+    IL_001b:  ldloc.1
+    IL_001c:  call       instance void class [mscorlib]System.Collections.Generic.List`1<class [Assembly1]Assembly1.Reports.Controls.Page>::AddRange(class [mscorlib]System.Collections.Generic.IEnumerable`1<!0>)
+    IL_0021:  ldarg.3
+    IL_0022:  ldsfld     native int [mscorlib]System.IntPtr::Zero
+    IL_0027:  call       bool [mscorlib]System.IntPtr::op_Inequality(native int,
+                                                                     native int)
+    IL_002c:  brfalse.s  IL_0042
+    IL_002e:  ldloc.0
+    IL_002f:  newobj     instance void [PresentationFramework]System.Windows.Interop.WindowInteropHelper::.ctor(class [PresentationFramework]System.Windows.Window)
+    IL_0034:  ldarg.3
+    IL_0035:  call       instance void [PresentationFramework]System.Windows.Interop.WindowInteropHelper::set_Owner(native int)
+    IL_003a:  ldloc.0
+    IL_003b:  ldarg.s    startLoc
+    IL_003d:  call       instance void [PresentationFramework]System.Windows.Window::set_WindowStartupLocation(valuetype [PresentationFramework]System.Windows.WindowStartupLocation)
+    IL_0042:  ldloc.0
+    IL_0043:  call       instance valuetype [mscorlib]System.Nullable`1<bool> [PresentationFramework]System.Windows.Window::ShowDialog()
+    IL_0048:  stloc.3
+    IL_0049:  leave.s    IL_006c
+  }  // end .try
+  catch [Assembly1]Assembly1.Reports.Utils.ReportLayoutException 
+  {
+    IL_004b:  stloc.2
+    IL_004c:  ldstr      "Cannot show:\n"
+    IL_0051:  ldloc.2
+    IL_0052:  callvirt   instance string [mscorlib]System.Exception::get_Message()
+    IL_0057:  call       string [mscorlib]System.String::Concat(string,
+                                                                string)
+    IL_005c:  ldstr      "Error"
+    IL_0061:  ldc.i4.0
+    IL_0062:  ldc.i4.s   16
+    IL_0064:  call       valuetype [PresentationFramework]System.Windows.MessageBoxResult [PresentationFramework]System.Windows.MessageBox::Show(string,
+                                                                                                                                                 string,
+                                                                                                                                                 valuetype [PresentationFramework]System.Windows.MessageBoxButton,
+                                                                                                                                                 valuetype [PresentationFramework]System.Windows.MessageBoxImage)
+    IL_0069:  pop
+    IL_006a:  leave.s    IL_006c
+  }  // end handler
+  IL_006c:  ret
+} // end of method ProblemClass::ProblemFunction
+
